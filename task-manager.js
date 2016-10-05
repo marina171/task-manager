@@ -1,7 +1,6 @@
-angular.module('taskManager', []).controller('MainController', function(){
+angular.module('taskManager', []).controller('MainController', function($scope){
 	$scope.tasks = [];
 	$scope.showDone = false;
-	$scope.sort = ['urgency', 'importance'];
 	$scope.activeTask = null;
 
 	this.createNew = function(){
@@ -15,13 +14,15 @@ angular.module('taskManager', []).controller('MainController', function(){
 		$scope.tasks.unshift($scope.activeTask);
 	}
 	this.setSort = function(sort){
-		if (sort == 'urgency') $scope.sort = ['urgency', 'importance', 'created'];
-		else if (sort == 'importance') $scope.sort = ['urgency', 'importance', 'created'];
+		if (sort == 'urgency') $scope.sort = ['-urgency', '-importance', '+created'];
+		else if (sort == 'importance') $scope.sort = ['-importance', '-urgency', '+created'];
 	}
 	this.toggleShowDone = function(){
 		$scope.showDone = !$scope.showDone;
 	}
-	this.completeTask = function(task){
-		task.done = true;
+	this.activate = function(task){
+		$scope.activeTask = task;
 	}
+	
+	this.setSort('urgency');
 });

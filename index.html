@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="taskManager">
 
 <head>
     <meta charset="utf-8"/>
@@ -9,45 +9,32 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-    <script src="task-manager.js"></script>
-    <script src="task-item.js"></script>
-    <script src="task-form.js"></script>
+    <script src="/task-manager.js"></script>
+    <script src="/task-item.js"></script>
+    <script src="/task-form.js"></script>
 </head>
 
-<body>
-
+<body ng-controller="MainController as manager">
     <section class="row">
-    <div class="col-lg-6 col-lg-push-3">
-        <div class=" new-task">
-            <p class="text-center">
-            </p>
-            <form>
-            <input type="text" class="form-control " placeholder="Заголовок задачи">
-                <textarea class="form-control description-task" rows="3" placeholder="Описание задачи"></textarea>
-                <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1"> Важное!
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox2" value="option2"> Срочное!
-                </label>
-            </form>
-        </div>
-
-    <section class="task-list">
-        <div class="task-filter col-lg-2">
-            <i class="glyphicon glyphicon-time icon-in-form"></i>
-            <i class="glyphicon glyphicon-star icon-in-form"></i>
-            <i class="glyphicon glyphicon-ok icon-in-form"></i>
-
-        </div>
-        <div class="task col-lg-8 col-lg-pull-2">
-            <ul>
-                <li>Сходить в магазин за продуктами</li>
-            </ul>
-        </div>
-
-    </section>
-    </div>
+		<div class="col-lg-6 col-lg-push-3">
+			<task-form task="activeTask"></task-form>
+			<section class="task-list">
+				<div class="task-filter col-lg-2">
+					<i class="glyphicon glyphicon-plus icon-in-form text-success" ng-click="manager.createNew()"></i>
+					<i class="glyphicon glyphicon-time icon-in-form" ng-click="manager.setSort('urgency')"></i>
+					<i class="glyphicon glyphicon-star icon-in-form" ng-click="manager.setSort('importance')"></i>
+					<i class="glyphicon glyphicon-ok icon-in-form" ng-click="manager.toggleShowDone()"></i>
+				</div>
+				<div class="task col-lg-8">
+					<ul class="list-group">
+						<task-item class="list-group-item"
+							ng-repeat="task in tasks | orderBy: sort" 
+							ng-click="manager.activate(task)"
+							task="task"></task-item>
+					</ul>
+				</div>
+			</section>
+		</div>
     </section>
 </body>
 </html>

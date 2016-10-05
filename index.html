@@ -22,12 +22,12 @@
             </p>
             <form>
             <input type="text" class="form-control " placeholder="Заголовок задачи">
-                <textarea class="form-control description-task" rows="3" placeholder="Описание задачи"></textarea>
+                <textarea class="form-control description-task" rows="3" placeholder="Описание задачи" ng-click="task.createNew()"></textarea>
                 <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1"> Важное!
+                <input type="checkbox" id="inlineCheckbox1" value="option1" ng-click="task.setSort('importance')"> Важное!
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox2" value="option2"> Срочное!
+                    <input type="checkbox" id="inlineCheckbox2" value="option2" ng-click="task.setSort('urgency')"> Срочное!
                 </label>
             </form>
         </div>

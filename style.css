@@ -1,0 +1,25 @@
+body {
+    width: 1200px;
+    margin: 0 auto;
+}
+textarea {
+    margin: auto;
+    display: block;
+}
+.description-task {
+    width: 400px;
+}
+.checkbox-inline {
+    display: flex;
+}
+li {
+    list-style: none;
+    border: 1px solid #000000;
+    width: 500px;
+    text-align: center;
+}
+.icon-in-form {
+    display: block !important;
+    padding-bottom: 10px;
+    font-size: x-large;
+}

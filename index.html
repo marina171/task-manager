@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="taskManager">>
+<html>
 
 <head>
     <meta charset="utf-8"/>
@@ -14,35 +14,40 @@
     <script src="task-form.js"></script>
 </head>
 
-<body ng-controller="MainController as task">
+<body>
+
     <section class="row">
-        <div class="new-task">
+    <div class="col-lg-6 col-lg-push-3">
+        <div class=" new-task">
             <p class="text-center">
-                description
             </p>
             <form>
             <input type="text" class="form-control " placeholder="Заголовок задачи">
-                <textarea class="form-control description-task" rows="3" placeholder="Описание задачи" ng-click="task.createNew()"></textarea>
+                <textarea class="form-control description-task" rows="3" placeholder="Описание задачи"></textarea>
                 <label class="checkbox-inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1" ng-click="task.setSort('importance')"> Важное!
+                <input type="checkbox" id="inlineCheckbox1" value="option1"> Важное!
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox2" value="option2" ng-click="task.setSort('urgency')"> Срочное!
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> Срочное!
                 </label>
             </form>
         </div>
-    </section>
+
     <section class="task-list">
-        <div class="task-filter">
-        <a href="#"><img src="#"></a>
-        <a href="#"><img src="#"></a>
+        <div class="task-filter col-lg-2">
+            <i class="glyphicon glyphicon-time icon-in-form"></i>
+            <i class="glyphicon glyphicon-star icon-in-form"></i>
+            <i class="glyphicon glyphicon-ok icon-in-form"></i>
+
         </div>
-        <div class="task">
+        <div class="task col-lg-8 col-lg-pull-2">
             <ul>
                 <li>Сходить в магазин за продуктами</li>
             </ul>
         </div>
-    </section>
 
+    </section>
+    </div>
+    </section>
 </body>
 </html>
